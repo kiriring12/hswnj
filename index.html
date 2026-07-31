@@ -120,9 +120,9 @@
 
     <div class="section-box" style="background: #eef6ff;">
       <div class="section-title">리플 코드 (선택사항)</div>
-      <div class="form-group"><input type="text" id="replay1" placeholder="리플코드 1 (U열)"></div>
-      <div class="form-group"><input type="text" id="replay2" placeholder="리플코드 2 (V열)"></div>
-      <div class="form-group"><input type="text" id="replay3" placeholder="리플코드 3 (W열)"></div>
+      <div class="form-group"><input type="text" id="replay1" placeholder="리플코드 1"></div>
+      <div class="form-group"><input type="text" id="replay2" placeholder="리플코드 2"></div>
+      <div class="form-group"><input type="text" id="replay3" placeholder="리플코드 3"></div>
     </div>
 
     <button type="submit">제출하기</button>
@@ -130,8 +130,8 @@
 </div>
 
 <script>
-  // 본인의 구글 웹 앱 URL 주소
-  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycb.../exec";
+  // 웹 앱 URL
+  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxOPmjikFQghCD-acDo4_afKxZ4XRnh_G5QYPzIdhNaF0eN2617QdPxCBF1KKhPqbMw/exec";
 
   function toggleTierInput(isQuickPlay) {
     document.getElementById('tierSection').style.display = isQuickPlay ? 'none' : 'block';
@@ -167,7 +167,6 @@
       replay3: document.getElementById('replay3').value.trim()
     };
 
-    // ★ mode: 'no-cors' 가 추가되어 브라우저의 CORS 차단을 우회합니다.
     fetch(GOOGLE_WEB_APP_URL, {
       method: 'POST',
       mode: 'no-cors',
