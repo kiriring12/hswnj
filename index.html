@@ -130,8 +130,8 @@
 </div>
 
 <script>
-  // 웹 앱 URL! //
-  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzkcApxwXCYdFMGbyWTuvuCJI1S6HO_jE6Oi3HczEFrxoH0kamWqtTnrLW4mwAHn3om/exec";
+  // 본인의 구글 웹 앱 URL 주소
+  const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycb.../exec";
 
   function toggleTierInput(isQuickPlay) {
     document.getElementById('tierSection').style.display = isQuickPlay ? 'none' : 'block';
@@ -167,13 +167,14 @@
       replay3: document.getElementById('replay3').value.trim()
     };
 
+    // ★ mode: 'no-cors' 가 추가되어 브라우저의 CORS 차단을 우회합니다.
     fetch(GOOGLE_WEB_APP_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     })
-    .then(res => res.json())
-    .then(data => {
+    .then(() => {
       alert('성공적으로 등록되었습니다!');
       document.getElementById('userInfoForm').reset();
       toggleTierInput(false);
@@ -182,9 +183,8 @@
       toggleSubTier('heal');
     })
     .catch(err => {
-      alert('등록이 완료되었습니다.');
-      document.getElementById('userInfoForm').reset();
-      toggleTierInput(false);
+      alert('등록 중 오류가 발생했습니다.');
+      console.error(err);
     });
   });
 </script>
