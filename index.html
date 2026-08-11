@@ -156,12 +156,14 @@
       battleTag: document.getElementById('battleTag').value.trim(),
       faction: document.getElementById('faction').value.trim(),
       isQuickPlay: isQuickPlay,
-      tankTier: document.getElementById('tankTier').value
-      tankSubTier: document.getElementById('tankSubTier').value,
-      dpsTier: document.getElementById('dpsTier').value
-      dpsSubTier: document.getElementById('dpsSubTier').value,
-      healTier: document.getElementById('healTier').value
-      healSubTier: document.getElementById('healSubTier').value,
+      const tankVal = document.getElementById('tankTier').value;
+      const tankTierFormatted = tankVal ? tankVal + document.getElementById('tankSubTier').value : "";
+
+      const dpsVal = document.getElementById('dpsTier').value;
+      const dpsTierFormatted = dpsVal ? dpsVal + document.getElementById('dpsSubTier').value : "";
+
+      const healVal = document.getElementById('healTier').value;
+      const healTierFormatted = healVal ? healVal + document.getElementById('healSubTier').value : "";
       most1: document.getElementById('most1').value.trim(),
       most2: document.getElementById('most2').value.trim(),
       most3: document.getElementById('most3').value.trim(),
