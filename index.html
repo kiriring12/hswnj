@@ -151,19 +151,25 @@
 
     const isQuickPlay = document.querySelector('input[name="userType"]:checked').value === 'quick';
 
+    // 메인 티어와 서브 티어를 합쳐서 저장 (예: "플레" + "5" = "플레5")
+    // 단, 티어를 선택하지 않은(언랭인) 경우 빈 문자열("")로 처리합니다.
+    const tankVal = document.getElementById('tankTier').value;
+    const tankTierFormatted = tankVal ? tankVal + document.getElementById('tankSubTier').value : "";
+
+    const dpsVal = document.getElementById('dpsTier').value;
+    const dpsTierFormatted = dpsVal ? dpsVal + document.getElementById('dpsSubTier').value : "";
+
+    const healVal = document.getElementById('healTier').value;
+    const healTierFormatted = healVal ? healVal + document.getElementById('healSubTier').value : "";
+
     const payload = {
       nickname: document.getElementById('nickname').value.trim(),
       battleTag: document.getElementById('battleTag').value.trim(),
       faction: document.getElementById('faction').value.trim(),
       isQuickPlay: isQuickPlay,
-      const tankVal = document.getElementById('tankTier').value;
-      const tankTierFormatted = tankVal ? tankVal + document.getElementById('tankSubTier').value : "";
-
-      const dpsVal = document.getElementById('dpsTier').value;
-      const dpsTierFormatted = dpsVal ? dpsVal + document.getElementById('dpsSubTier').value : "";
-
-      const healVal = document.getElementById('healTier').value;
-      const healTierFormatted = healVal ? healVal + document.getElementById('healSubTier').value : "";
+      tankTier: tankTierFormatted, 
+      dpsTier: dpsTierFormatted,   
+      healTier: healTierFormatted,   
       most1: document.getElementById('most1').value.trim(),
       most2: document.getElementById('most2').value.trim(),
       most3: document.getElementById('most3').value.trim(),
@@ -190,6 +196,9 @@
       alert('등록이 완료되었습니다.');
       document.getElementById('userInfoForm').reset();
       toggleTierInput(false);
+      toggleSubTier('tank');
+      toggleSubTier('dps');
+      toggleSubTier('heal');
     });
   });
 </script>
